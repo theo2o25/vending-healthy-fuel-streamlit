@@ -77,7 +77,8 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
   display:grid; place-items:center; font-size:1.3rem; }
 .benefit h3{ font-size:1rem; font-weight:700; margin:0 0 2px; }
 .benefit p{ font-size:.9rem; color:var(--muted); margin:0; }
-.step .n{ font-size:2.6rem; font-weight:800; color:var(--sun); line-height:1; }
+.step .n{ font-size:1.35rem; font-weight:800; color:var(--sun); line-height:1;
+  text-transform:uppercase; letter-spacing:.04em; }
 .step h3{ font-size:1.1rem; font-weight:700; margin-top:.4rem; }
 .step p{ font-size:.92rem; color:var(--muted); }
 
@@ -279,7 +280,7 @@ with col_r:
 # ---------------------------------------------------------------------------
 section_heading("How it works", "Simple from <span class='g'>start to snack.</span>")
 steps = "".join(
-    f'<div class="card step"><div class="n">{s["n"]}</div><h3>{s["title"]}</h3><p>{s["desc"]}</p></div>'
+    f'<div class="card step"><div class="n">Step {s["n"]}</div><h3>{s["title"]}</h3><p>{s["desc"]}</p></div>'
     for s in STEPS
 )
 st.markdown(f'<div class="grid-3">{steps}</div>', unsafe_allow_html=True)
