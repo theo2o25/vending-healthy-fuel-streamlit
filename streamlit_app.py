@@ -130,14 +130,8 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 
 /* FAQ / chatbot */
 .chat-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
-.chat-q{ font-weight:600; margin-bottom:.3rem; }
-.chat-qa{ background:var(--surface-2); border:1px solid var(--line); border-radius:12px;
-  padding:12px 14px; margin:.8rem 0 .6rem; }
-.chat-qa .a{ color:var(--muted); font-size:.9rem; margin-top:.2rem; }
-.chat-pill{ display:inline-block; background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
-  color:var(--leaf-dark); font-weight:700; font-size:.78rem; padding:8px 14px; border-radius:999px;
-  margin:0 .5rem .5rem 0; cursor:pointer; }
-.note{ font-size:.86rem; color:var(--muted); margin-top:.4rem; }
+.chat-card [data-testid="stPills"] { margin:0 0 .4rem; }
+.chat-card [data-testid="stChatMessage"] { margin-top:.6rem; }
 
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:1fr;}
   .spotlight{flex-direction:column;align-items:flex-start;padding:34px 28px;} }
@@ -343,31 +337,26 @@ section_heading("Quick answers", "Got questions? <span class='g'>We've got you.<
                 "Ask away, or tap a common question below. This little helper answers instantly "
                 "from our knowledge base.")
 
-chat_l, chat_r = st.columns([3, 2])
-with chat_l:
-    st.markdown('<div class="chat-card">', unsafe_allow_html=True)
+st.markdown('<div class="chat-card">', unsafe_allow_html=True)
+_quick_qs = ["How much does it cost?", "How do I host a machine?",
+             "What snacks do you sell?", "How do I contact you?"]
+top_tap = st.pills("Tap a common question:", options=_quick_qs, key="faq_pills")
+qc, qb = st.columns([4, 1])
+with qc:
     qtext = st.text_input("Your question", placeholder='e.g. "How much does it cost to host?"',
                           key="faq_input", label_visibility="collapsed")
-    if st.button("Ask", type="primary"):
-        if qtext.strip():
-            st.session_state["faq_answer"] = answer_question(qtext.strip())
-        else:
-            st.session_state["faq_answer"] = "Please type a question first! 👇"
-    if "faq_answer" in st.session_state:
-        st.markdown(f'<div class="chat-qa"><div class="a">{st.session_state["faq_answer"]}</div></div>',
-                    unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-with chat_r:
-    # Common questions as quick-tap pills
-    pills = ["How much does it cost?", "How do I host a machine?",
-             "What snacks do you sell?", "How do I contact you?"]
-    st.markdown('<div class="note">Common questions:</div>', unsafe_allow_html=True)
-    for p in pills:
-        if st.button(p, key=f"pill_{p}"):
-            st.session_state["pill_answer"] = answer_question(p)
-    if "pill_answer" in st.session_state:
-        st.markdown(f'<div class="chat-qa"><div class="a">{st.session_state["pill_answer"]}</div></div>',
-                    unsafe_allow_html=True)
+with qb:
+    st.write("")
+    ask = st.button("Ask", type="primary", use_container_width=True)
+if ask:
+    st.session_state["bot_reply"] = (
+        answer_question(qtext.strip()) if qtext.strip() else "Please type a question first! 👇"
+    )
+elif top_tap:
+    st.session_state["bot_reply"] = answer_question(top_tap)
+if "bot_reply" in st.session_state:
+    st.chat_message("assistant").write(st.session_state["bot_reply"])
+st.markdown('</div>', unsafe_allow_html=True)
 
 st.write("")
 st.write("")
