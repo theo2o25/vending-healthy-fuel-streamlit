@@ -148,9 +148,54 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:1fr;}
   .spotlight{flex-direction:column;align-items:flex-start;padding:34px 28px;} }
 @media (max-width:520px){ .grid{grid-template-columns:1fr;} .grid-2{grid-template-columns:1fr;} }
+
+/* Top navigation */
+.vhf-nav{
+  position:sticky; top:0; z-index:500;
+  display:flex; flex-wrap:wrap; gap:4px; align-items:center;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  padding:10px 2px; margin-bottom:1.5rem;
+}
+.vhf-nav a{
+  font-weight:600; font-size:.9rem; color:var(--muted);
+  text-decoration:none; padding:8px 14px; border-radius:999px;
+  transition:color .15s, background .15s; cursor:pointer;
+}
+.vhf-nav a:hover{ color:var(--leaf-dark); background:var(--leaf-soft); }
+.vhf-nav a.cta{ background:var(--leaf); color:#fff !important; }
+.vhf-nav a.cta:hover{ background:var(--leaf-dark); color:#fff !important; }
+#snacks,#locations,#partners,#how,#faq,#contact{ scroll-margin-top:96px; }
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
+
+# --------------------------------------------------------------------------
+# STICKY TOP NAV
+# --------------------------------------------------------------------------
+_NAV_ITEMS = [
+    ("Snacks", "snacks"),
+    ("Where We Are", "locations"),
+    ("For Partners", "partners"),
+    ("How It Works", "how"),
+    ("FAQ", "faq"),
+    ("Contact", "contact"),
+]
+_nav_links = "".join(
+    f'<a onclick="vhfScroll(\'{target}\');return false;">{label}</a>'
+    for label, target in _NAV_ITEMS[:-1]
+) + f'<a class="cta" onclick="vhfScroll(\'contact\');return false;">Get In Touch</a>'
+st.html(
+    f'<nav class="vhf-nav">{_nav_links}</nav>'
+    "<script>"
+    "function vhfScroll(id) {"
+    "  var el = document.getElementById(id);"
+    "  if (el) { el.scrollIntoView({behavior:'smooth', block:'start'}); }"
+    "}"
+    "</script>"
+)
+st.write("")
 
 
 def section_heading(kicker, title_html, lede=None):
@@ -268,12 +313,12 @@ st.write("")
 # ---------------------------------------------------------------------------
 logos = "".join(f"<span>{l}</span>" for l in SPOTLIGHT_LOGOS)
 st.markdown(
-    '<div class="spotlight"><div class="badge-big">🏫</div><div>'
+    '<div id="locations"><div class="spotlight"><div class="badge-big">🏫</div><div>'
     "<h3>Serving Tucson's students today.</h3>"
     "<p>VHF holds the vending contract for the Tucson Unified School District, and Tucson High just "
     "came on board — with machines live at BC Dance Studio and rolling out at private schools, the YMCA, "
     "gyms, hospitals, and commercial areas across the region.</p>"
-    f'<div class="logos">{logos}</div></div></div>',
+    f'<div class="logos">{logos}</div></div></div></div>',
     unsafe_allow_html=True,
 )
 
@@ -283,6 +328,7 @@ st.write("")
 # ---------------------------------------------------------------------------
 # FOR PARTNERS
 # ---------------------------------------------------------------------------
+st.markdown('<div id="partners"></div>', unsafe_allow_html=True)
 section_heading("For partners", "Bring better snacking <span class='g'>to your space.</span>",
                 "Schools, gyms, studios, hospitals and community centers — VHF handles everything "
                 "so you can offer your students and members a healthy choice.")
@@ -306,6 +352,7 @@ st.markdown(
 # ---------------------------------------------------------------------------
 # HOW IT WORKS
 # ---------------------------------------------------------------------------
+st.markdown('<div id="how"></div>', unsafe_allow_html=True)
 section_heading("How it works", "Simple from <span class='g'>start to snack.</span>")
 steps = "".join(
     f'<div class="card step"><div class="n">Step {s["n"]}</div><h3>{s["title"]}</h3><p>{s["desc"]}</p></div>'
