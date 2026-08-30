@@ -132,7 +132,7 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 .chat-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
 .chat-q{ font-weight:600; margin-bottom:.3rem; }
 .chat-qa{ background:var(--surface-2); border:1px solid var(--line); border-radius:12px;
-  padding:12px 14px; margin-bottom:.6rem; }
+  padding:12px 14px; margin:.8rem 0 .6rem; }
 .chat-qa .a{ color:var(--muted); font-size:.9rem; margin-top:.2rem; }
 .chat-pill{ display:inline-block; background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
   color:var(--leaf-dark); font-weight:700; font-size:.78rem; padding:8px 14px; border-radius:999px;
@@ -364,7 +364,10 @@ with chat_r:
     st.markdown('<div class="note">Common questions:</div>', unsafe_allow_html=True)
     for p in pills:
         if st.button(p, key=f"pill_{p}"):
-            st.session_state["faq_answer"] = answer_question(p)
+            st.session_state["pill_answer"] = answer_question(p)
+    if "pill_answer" in st.session_state:
+        st.markdown(f'<div class="chat-qa"><div class="a">{st.session_state["pill_answer"]}</div></div>',
+                    unsafe_allow_html=True)
 
 st.write("")
 st.write("")
