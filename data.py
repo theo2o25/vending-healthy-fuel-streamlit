@@ -25,7 +25,7 @@ SNACKS = [
      "photo": "images/popcorn.jpg"},
     {"emoji": "🥕", "name": "Veggie Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe",
      "photo": "images/veggie-chips.jpg"},
-    {"emoji": "🍫", "name": "Dark Chocolate Snacks", "desc": "Rich 70%+ cacao — a better treat that's more heat-tolerant.", "tag": "Better Treat",
+    {"emoji": "🍫", "name": "Dark Chocolate Snacks", "desc": "Healthy but sweet chocolatey options.", "tag": "Better Treat",
      "photo": "images/dark-chocolate.jpg"},
     {"emoji": "⚡", "name": "Healthy Energy Drinks", "desc": "Clean, low-sugar boosts to fuel busy students.", "tag": "Energy",
      "photo": "images/energy-drink.jpg"},
