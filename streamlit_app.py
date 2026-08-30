@@ -50,14 +50,6 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
 
-/* Hero photo */
-.hero-img{ width:100%; border-radius:22px; object-fit:cover; box-shadow:0 20px 40px -20px rgba(29,43,34,.45);
-  border:1px solid var(--line); }
-
-/* Snack photo */
-.snack .photo{ width:100%; height:150px; object-fit:cover; border-radius:12px; margin-bottom:.8rem;
-  border:1px solid var(--line); }
-
 .chip-row{ display:flex; flex-wrap:wrap; gap:.6rem; }
 .chip{ font-weight:600; font-size:.82rem; color:var(--ink); background:var(--surface);
   border:1px solid var(--line); padding:8px 14px; border-radius:999px; }
@@ -196,8 +188,7 @@ with col_l:
     chips = "".join(f'<span class="chip">{t}</span>' for t in HERO_TAGS)
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
 with col_r:
-    st.markdown(f'<img class="hero-img" src="{HERO_PHOTO}" alt="Fresh healthy snacks from VHF" '
-                'loading="lazy" referrerpolicy="no-referrer">', unsafe_allow_html=True)
+    st.image(HERO_PHOTO, width="stretch")
 
 st.write("")
 st.write("")
@@ -219,14 +210,22 @@ st.markdown('<div id="snacks"></div>', unsafe_allow_html=True)
 section_heading("What's inside", "Real snacks, <span class='g'>no junk.</span>",
                 "Every machine is stocked with treats students actually want — heat-safe and "
                 "weather-proof for Arizona, so nothing melts, sours, or goes stale in the machine.")
-snack_cards = "".join(
-    f'<div class="card ctr snack"><img class="photo" src="{s["photo"]}" alt="{s["name"]}" '
-    f'loading="lazy" referrerpolicy="no-referrer">'
-    f'<div class="emoji">{s["emoji"]}</div>'
-    f'<h3>{s["name"]}</h3><p>{s["desc"]}</p><span class="tag">{s["tag"]}</span></div>'
-    for s in SNACKS
-)
-st.markdown(f'<div class="grid">{snack_cards}</div>', unsafe_allow_html=True)
+
+# Render snacks 4-per-row with Streamlit columns so local images display correctly.
+COLS_PER_ROW = 4
+for i in range(0, len(SNACKS), COLS_PER_ROW):
+    row = SNACKS[i:i + COLS_PER_ROW]
+    cols = st.columns(len(row))
+    for col, s in zip(cols, row):
+        with col:
+            st.image(s["photo"], width="stretch")
+            st.markdown(
+                f'<div class="card ctr snack">'
+                f'<div class="emoji">{s["emoji"]}</div>'
+                f'<h3>{s["name"]}</h3><p>{s["desc"]}</p>'
+                f'<span class="tag">{s["tag"]}</span></div>',
+                unsafe_allow_html=True,
+            )
 
 st.write("")
 st.write("")

@@ -60,15 +60,16 @@ Open **`data.py`**. Each snack is one line, e.g.:
 
 ```python
 {"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein",
- "photo": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80&auto=format&fit=crop"},
+ "photo": "images/trail-mix.jpg"},
 ```
 
 Add, remove, or reorder — push to `main` and the site updates. Same file holds stats,
 locations, partner benefits, the hero photo (`HERO_PHOTO`), and contact details.
 
-**Photos:** each snack uses a free Unsplash image so the page looks complete. They load live
-from `images.unsplash.com`. These are generic stock photos, not the real machines/snacks — swap
-any that don't match by replacing the `photo` URL. Set `HERO_PHOTO` for the big hero image.
+**Photos (real images):** photos are local files in the **`images/`** folder. To change a
+picture, just replace the file (keeping the same filename — e.g. `images/trail-mix.jpg`) —
+no code edit needed. Reference hero via `HERO_PHOTO` and each snack via its `photo` key.
+Because they're bundled with the repo, the same files serve locally and on Streamlit Cloud.
 
 ## FAQ chatbot
 

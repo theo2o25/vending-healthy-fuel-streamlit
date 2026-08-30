@@ -5,12 +5,12 @@ Snacks are shown in-order on the page.
 """
 
 # ---------------------------------------------------------------------------
-# PHOTOS (free stock photos; each is easy to swap)
+# PHOTOS (local images in the app's `images/` folder)
 # ---------------------------------------------------------------------------
-# To change a photo, just replace the URL. Images load live from Unsplash's CDN.
-# NOTE: review these in the running app and swap any that don't match — they're
-# generic stock photos, not pictures of the actual machines/snacks.
-HERO_PHOTO = "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80&auto=format&fit=crop"
+# Real photo files live in the `images/` directory next to this file. To change
+# a photo, replace the file in `images/` (keeping the same name) — no code edit
+# needed. `photo` is the relative path used to load each file.
+HERO_PHOTO = "images/hero.jpg"
 
 # ---------------------------------------------------------------------------
 # SNAPSHOT CATALOG
@@ -18,21 +18,21 @@ HERO_PHOTO = "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q
 # Each snack: emoji, name, short description, category tag, and photo.
 SNACKS = [
     {"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein",
-     "photo": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/trail-mix.jpg"},
     {"emoji": "🌾", "name": "Granola & Seed Bars", "desc": "Chewy, filling bars made from real whole grains.", "tag": "Fiber",
-     "photo": "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/granola.jpg"},
     {"emoji": "🍿", "name": "Popcorn & Crisps", "desc": "Light, crunchy snacks that won't weigh you down.", "tag": "Better Snack",
-     "photo": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/popcorn.jpg"},
     {"emoji": "🥕", "name": "Veggie Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe",
-     "photo": "https://images.unsplash.com/photo-1557844352-761f2565b576?w=600&q=80&auto=format&fit=crop"},
-    {"emoji": "🍫", "name": "Dark Chocolate", "desc": "Rich 70%+ cacao — a better treat that's more heat-tolerant.", "tag": "Better Treat",
-     "photo": "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/veggie-chips.jpg"},
+    {"emoji": "🍫", "name": "Dark Chocolate Snacks", "desc": "Rich 70%+ cacao — a better treat that's more heat-tolerant.", "tag": "Better Treat",
+     "photo": "images/dark-chocolate.jpg"},
     {"emoji": "⚡", "name": "Healthy Energy Drinks", "desc": "Clean, low-sugar boosts to fuel busy students.", "tag": "Energy",
-     "photo": "https://images.unsplash.com/photo-1600289031464-74d374b64991?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/energy-drink.jpg"},
     {"emoji": "💧", "name": "Water & Hydration", "desc": "Hydrating drinks to go with every snack.", "tag": "Hydrate",
-     "photo": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/water.jpg"},
     {"emoji": "🥨", "name": "More Better Choices", "desc": "Curated options that hit the spot — minus the junk.", "tag": "Curated",
-     "photo": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80&auto=format&fit=crop"},
+     "photo": "images/better-choices.jpg"},
 ]
 
 # ---------------------------------------------------------------------------

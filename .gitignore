@@ -5,3 +5,7 @@
 __pycache__/
 *.pyc
 .venv/
+
+# Local run logs (not part of the app)
+streamlit_run.log
+streamlit_err.log
