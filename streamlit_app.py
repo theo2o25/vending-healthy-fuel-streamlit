@@ -86,11 +86,16 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .benefit p{ font-size:.9rem; color:var(--muted); margin:0; }
 
 /* Host-a-machine callout */
-.cta-card{ display:flex; gap:18px; align-items:center; background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));
-  color:#fff; border-radius:18px; padding:26px 28px; margin-top:1.5rem; }
+.cta-card{ display:flex; gap:22px; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));
+  color:#fff; border-radius:18px; padding:28px 30px; margin-top:1.5rem; }
 .cta-card .cta-title{ font-size:clamp(1.3rem,2.6vw,1.8rem); font-weight:800; color:#fff; }
 .cta-card .cta-title .g{ color:var(--sun); }
-.cta-card p{ margin:.4rem 0 0; font-size:1rem; opacity:.95; }
+.cta-card p{ margin:.4rem 0 0; font-size:1rem; opacity:.95; max-width:36rem; }
+.cta-link{ display:inline-block; background:var(--sun); color:#141a12; font-weight:800;
+  font-size:1.05rem; padding:.85rem 1.6rem; border-radius:12px; text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.18); transition:transform .12s ease; }
+.cta-link:hover{ transform:translateY(-2px); color:#141a12; }
 .step .n{ font-size:2rem; font-weight:800; color:var(--sun); line-height:1;
   text-transform:uppercase; letter-spacing:.04em; }
 .step{ text-align:center; }
@@ -193,8 +198,6 @@ col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
-        '<div class="brand-title"><span class="bt-v">Vending</span> '
-        '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></div>'
         '<h1 class="hero-title">Healthy <span class="g">fuel</span> for student life — '
         '<span class="sun">one vending machine</span> at a time.</h1>',
         unsafe_allow_html=True,
@@ -212,6 +215,11 @@ with col_l:
     chips = "".join(f'<span class="chip">{t}</span>' for t in HERO_TAGS)
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
 with col_r:
+    st.markdown(
+        '<div class="brand-title"><span class="bt-v">Vending</span> '
+        '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></div>',
+        unsafe_allow_html=True,
+    )
     st.image(HERO_PHOTO, width="stretch")
 
 st.write("")
@@ -286,12 +294,13 @@ st.markdown(f'<div class="grid">{benefits}</div>', unsafe_allow_html=True)
 
 # Host-a-machine callout (full width below the benefits)
 st.markdown(
-    '<div class="cta-card"><div><div class="cta-title">Host a <span class="g">machine.</span></div>'
+    '<div class="cta-card">'
+    '<div><div class="cta-title">Host a <span class="g">machine.</span></div>'
     "<p>Tell us about your location and we'll take it from there — installation, stocking, "
-    "and service all handled by VHF.</p></div></div>",
+    "and service all handled by VHF.</p></div>"
+    '<a class="cta-link" href="#contact">Request a placement</a></div>',
     unsafe_allow_html=True,
 )
-st.button("Request a placement", type="primary", on_click=go_to, args=("contact",))
 
 # ---------------------------------------------------------------------------
 # HOW IT WORKS
