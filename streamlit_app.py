@@ -237,8 +237,8 @@ logos = "".join(f"<span>{l}</span>" for l in SPOTLIGHT_LOGOS)
 st.markdown(
     '<div class="spotlight"><div class="badge-big">🏫</div><div>'
     "<h3>Serving Tucson's students today.</h3>"
-    "<p>VHF currently holds the contract for the Tucson Unified School District and is live across "
-    "TUSD high schools and BC Dance Studio — with machines rolling out at private schools, the YMCA, "
+    "<p>VHF holds the vending contract for the Tucson Unified School District, and Tucson High just "
+    "came on board — with machines live at BC Dance Studio and rolling out at private schools, the YMCA, "
     "gyms, hospitals, and jiujitsu &amp; dance academies across the region.</p>"
     f'<div class="logos">{logos}</div></div></div>',
     unsafe_allow_html=True,

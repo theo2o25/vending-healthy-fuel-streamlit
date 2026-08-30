@@ -40,7 +40,7 @@ SNACKS = [
 # ---------------------------------------------------------------------------
 STATS = [
     {"num": "TUSD", "label": "Vending contract for Tucson Unified School District"},
-    {"num": "HS+", "label": "High schools served", "accent": "sun"},
+    {"num": "🏫", "label": "Tucson High just came on board!", "accent": "sun"},
     {"num": "🩰", "label": "BC Dance Studio on board", "accent": "sky"},
     {"num": "100%", "label": "Locally owned & operated", "accent": "berry"},
 ]
