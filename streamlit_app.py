@@ -176,7 +176,7 @@ st.markdown(CSS, unsafe_allow_html=True)
 # --------------------------------------------------------------------------
 _NAV_ITEMS = [
     ("Snacks", "snacks"),
-    ("Where We Are", "locations"),
+    ("Serving Tucson's Students Today", "locations"),
     ("For Partners", "partners"),
     ("How It Works", "how"),
     ("FAQ", "faq"),
@@ -286,7 +286,6 @@ st.write("")
 logos = "".join(f"<span>{l}</span>" for l in SPOTLIGHT_LOGOS)
 st.markdown(
     '<div id="locations"><div class="spotlight"><div class="badge-big">🏫</div><div>'
-    "<h3>Serving Tucson's students today.</h3>"
     "<p>VHF holds the vending contract for the Tucson Unified School District, and Tucson High just "
     "came on board — with machines live at dance studios and rolling out at private schools, "
     "gyms, hospitals, and commercial areas across the region.</p>"
