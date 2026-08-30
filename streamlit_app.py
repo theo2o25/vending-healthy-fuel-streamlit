@@ -130,6 +130,7 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 
 /* FAQ / chatbot */
 .chat-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
+.chat-card [data-testid="stElementContainer"]{ background:transparent; }
 .chat-card [data-testid="stPills"] { margin:0 0 .4rem; }
 .chat-card [data-testid="stChatMessage"] { margin-top:.6rem; }
 
