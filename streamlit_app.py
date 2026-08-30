@@ -97,6 +97,10 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
   font-size:1.05rem; padding:.85rem 1.6rem; border-radius:12px; text-decoration:none;
   box-shadow:0 4px 14px rgba(0,0,0,.18); transition:transform .12s ease; }
 .cta-link:hover{ transform:translateY(-2px); color:#141a12; }
+.ghost-cta{ display:inline-block; background:transparent; color:var(--ink); font-weight:800;
+  font-size:1.05rem; padding:.85rem 1.6rem; border-radius:12px; text-decoration:none;
+  border:2px solid var(--line); text-align:center; }
+.ghost-cta:hover{ border-color:var(--leaf); color:var(--leaf-dark); }
 .step .n{ font-size:2rem; font-weight:800; color:var(--sun); line-height:1;
   text-transform:uppercase; letter-spacing:.04em; }
 .step{ text-align:center; }
@@ -183,18 +187,10 @@ _NAV_ITEMS = [
     ("Contact", "contact"),
 ]
 _nav_links = "".join(
-    f'<a onclick="vhfScroll(\'{target}\');return false;">{label}</a>'
+    f'<a href="#{target}">{label}</a>'
     for label, target in _NAV_ITEMS[:-1]
-) + f'<a class="cta" onclick="vhfScroll(\'contact\');return false;">Get In Touch</a>'
-st.html(
-    f'<nav class="vhf-nav">{_nav_links}</nav>'
-    "<script>"
-    "function vhfScroll(id) {"
-    "  var el = document.getElementById(id);"
-    "  if (el) { el.scrollIntoView({behavior:'smooth', block:'start'}); }"
-    "}"
-    "</script>"
-)
+) + '<a class="cta" href="#contact">Get In Touch</a>'
+st.html(f'<nav class="vhf-nav">{_nav_links}</nav>')
 st.write("")
 
 
@@ -204,28 +200,6 @@ def section_heading(kicker, title_html, lede=None):
         html += f'<p class="lede">{lede}</p>'
     st.markdown(html, unsafe_allow_html=True)
     st.write("")
-
-
-def go_to(target: str):
-    """Set a session flag that scrolls to an element id on the next rerun."""
-    st.session_state["go"] = target
-
-
-def handle_scroll():
-    """Scroll to a section after the page renders (runs once per target)."""
-    target = st.session_state.pop("go", None)
-    if not target:
-        return
-    st.html(
-        f"""
-        <script>
-        window.setTimeout(function(){{
-            var el = document.getElementById('{target}');
-            if (el) {{ el.scrollIntoView({{behavior:'smooth', block:'start'}}); }}
-        }}, 250);
-        </script>
-        """
-    )
 
 
 def answer_question(text: str) -> str:
@@ -253,11 +227,13 @@ with col_l:
         "high schools, gyms, studios, and beyond. Better choices, right where they already are.</p>",
         unsafe_allow_html=True,
     )
-    c1, c2 = st.columns(2)
-    with c1:
-        st.button("See the snacks", use_container_width=True, on_click=go_to, args=("snacks",))
-    with c2:
-        st.button("Host a machine", use_container_width=True, on_click=go_to, args=("contact",))
+    st.markdown(
+        '<div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;">'
+        '<a class="ghost-cta" style="flex:1 1 170px;" href="#snacks">See the snacks</a>'
+        '<a class="cta-link" style="flex:1 1 170px; text-align:center;" href="#contact">Host a machine</a>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
     chips = "".join(f'<span class="chip">{t}</span>' for t in HERO_TAGS)
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
 with col_r:
@@ -490,5 +466,3 @@ st.markdown(
     f'Locally owned &amp; operated in {LOCATION}.</span></div>',
     unsafe_allow_html=True,
 )
-
-handle_scroll()
