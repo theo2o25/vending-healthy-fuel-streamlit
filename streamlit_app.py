@@ -46,8 +46,8 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .hero-badge{ display:inline-block; font-weight:700; font-size:.82rem; color:var(--leaf-dark);
   background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
   padding:8px 14px; border-radius:999px; margin-bottom:1rem; }
-.brand-title{ font-size:1.05rem; font-weight:800; letter-spacing:.02em; color:var(--ink);
-  margin-bottom:.4rem; }
+.brand-title{ font-size:clamp(1.6rem,3.4vw,2.4rem); font-weight:800; letter-spacing:-.01em;
+  color:var(--leaf-dark); margin:0 0 .2rem; line-height:1.1; }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
@@ -188,7 +188,7 @@ col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
-        '<div class="brand-title">🥤 Vending Healthy Fuel</div>'
+        '<div class="brand-title">Vending Healthy Fuel</div>'
         '<h1 class="hero-title">Healthy <span class="g">fuel</span> for student life — '
         '<span class="sun">one vending machine</span> at a time.</h1>',
         unsafe_allow_html=True,
