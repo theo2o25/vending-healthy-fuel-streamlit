@@ -97,10 +97,6 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
   font-size:1.05rem; padding:.85rem 1.6rem; border-radius:12px; text-decoration:none;
   box-shadow:0 4px 14px rgba(0,0,0,.18); transition:transform .12s ease; }
 .cta-link:hover{ transform:translateY(-2px); color:#141a12; }
-.ghost-cta{ display:inline-block; background:transparent; color:var(--ink); font-weight:800;
-  font-size:1.05rem; padding:.85rem 1.6rem; border-radius:12px; text-decoration:none;
-  border:2px solid var(--line); text-align:center; }
-.ghost-cta:hover{ border-color:var(--leaf); color:var(--leaf-dark); }
 .step .n{ font-size:2rem; font-weight:800; color:var(--sun); line-height:1;
   text-transform:uppercase; letter-spacing:.04em; }
 .step{ text-align:center; }
@@ -229,7 +225,7 @@ with col_l:
     )
     st.markdown(
         '<div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;">'
-        '<a class="ghost-cta" style="flex:1 1 170px;" href="#snacks">See the snacks</a>'
+        '<a class="cta-link" style="flex:1 1 170px; text-align:center;" href="#snacks">See the snacks</a>'
         '<a class="cta-link" style="flex:1 1 170px; text-align:center;" href="#contact">Host a machine</a>'
         '</div>',
         unsafe_allow_html=True,
