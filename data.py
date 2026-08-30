@@ -52,7 +52,7 @@ HERO_TAGS = [
     "🏫 TUSD high schools",
     "🏛️ Private schools",
     "💃 Dance academies",
-    "🎓 Juijitsu schools",
+    "🏢 Commercial areas",
     "💪 Gyms",
     "🏥 Hospitals",
     "🤸 YMCA",
@@ -65,7 +65,7 @@ SPOTLIGHT_LOGOS = [
     "YMCA",
     "Gyms",
     "Hospitals",
-    "Jiujitsu & Dance",
+    "Commercial areas",
 ]
 
 # ---------------------------------------------------------------------------

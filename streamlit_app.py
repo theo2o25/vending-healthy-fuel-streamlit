@@ -263,7 +263,7 @@ st.markdown(
     "<h3>Serving Tucson's students today.</h3>"
     "<p>VHF holds the vending contract for the Tucson Unified School District, and Tucson High just "
     "came on board — with machines live at BC Dance Studio and rolling out at private schools, the YMCA, "
-    "gyms, hospitals, and jiujitsu &amp; dance academies across the region.</p>"
+    "gyms, hospitals, and commercial areas across the region.</p>"
     f'<div class="logos">{logos}</div></div></div>',
     unsafe_allow_html=True,
 )
