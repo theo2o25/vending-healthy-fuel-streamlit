@@ -5,18 +5,34 @@ Snacks are shown in-order on the page.
 """
 
 # ---------------------------------------------------------------------------
+# PHOTOS (free stock photos; each is easy to swap)
+# ---------------------------------------------------------------------------
+# To change a photo, just replace the URL. Images load live from Unsplash's CDN.
+# NOTE: review these in the running app and swap any that don't match — they're
+# generic stock photos, not pictures of the actual machines/snacks.
+HERO_PHOTO = "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80&auto=format&fit=crop"
+
+# ---------------------------------------------------------------------------
 # SNAPSHOT CATALOG
 # ---------------------------------------------------------------------------
-# Each snack: emoji, name, short description, and a category tag.
+# Each snack: emoji, name, short description, category tag, and photo.
 SNACKS = [
-    {"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein"},
-    {"emoji": "🌾", "name": "Granola & Seed Bars", "desc": "Chewy, filling bars made from real whole grains.", "tag": "Fiber"},
-    {"emoji": "🍿", "name": "Popcorn & Crisps", "desc": "Light, crunchy snacks that won't weigh you down.", "tag": "Better Snack"},
-    {"emoji": "🥕", "name": "Veggie Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe"},
-    {"emoji": "🍫", "name": "Dark Chocolate", "desc": "Rich 70%+ cacao — a better treat that's more heat-tolerant.", "tag": "Better Treat"},
-    {"emoji": "⚡", "name": "Healthy Energy Drinks", "desc": "Clean, low-sugar boosts to fuel busy students.", "tag": "Energy"},
-    {"emoji": "💧", "name": "Water & Hydration", "desc": "Hydrating drinks to go with every snack.", "tag": "Hydrate"},
-    {"emoji": "🥨", "name": "More Better Choices", "desc": "Curated options that hit the spot — minus the junk.", "tag": "Curated"},
+    {"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein",
+     "photo": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "🌾", "name": "Granola & Seed Bars", "desc": "Chewy, filling bars made from real whole grains.", "tag": "Fiber",
+     "photo": "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "🍿", "name": "Popcorn & Crisps", "desc": "Light, crunchy snacks that won't weigh you down.", "tag": "Better Snack",
+     "photo": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "🥕", "name": "Veggie Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe",
+     "photo": "https://images.unsplash.com/photo-1557844352-761f2565b576?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "🍫", "name": "Dark Chocolate", "desc": "Rich 70%+ cacao — a better treat that's more heat-tolerant.", "tag": "Better Treat",
+     "photo": "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "⚡", "name": "Healthy Energy Drinks", "desc": "Clean, low-sugar boosts to fuel busy students.", "tag": "Energy",
+     "photo": "https://images.unsplash.com/photo-1600289031464-74d374b64991?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "💧", "name": "Water & Hydration", "desc": "Hydrating drinks to go with every snack.", "tag": "Hydrate",
+     "photo": "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&q=80&auto=format&fit=crop"},
+    {"emoji": "🥨", "name": "More Better Choices", "desc": "Curated options that hit the spot — minus the junk.", "tag": "Curated",
+     "photo": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80&auto=format&fit=crop"},
 ]
 
 # ---------------------------------------------------------------------------
@@ -79,3 +95,58 @@ CONTACT_EMAIL = "info@vendinghealthyfuel.com"
 CONTACT_PHONE = "(520) 710-8264"
 CONTACT_PHONE_HREF = "tel:+15207108264"
 LOCATION = "Tucson, Arizona"
+
+# ---------------------------------------------------------------------------
+# FAQ / CHATBOT KNOWLEDGE BASE
+# ---------------------------------------------------------------------------
+# Rule-based chatbot answers. Each item has keywords the bot matches against
+# and an answer. Edit freely — the bot reads this list on each run.
+FAQ = [
+    {
+        "keywords": ["price", "cost", "how much", "pricing", "expensive", "fee"],
+        "answer": "Pricing is simple and tailored to each location. We set fair prices that work for students "
+                  "and make sense for your space. Reach out and we'll put together a plan for your spot — no "
+                  "obligation.",
+    },
+    {
+        "keywords": ["where", "location", "school", "tusd", "campus", "gym", "hospital", "studio", "ymca"],
+        "answer": "We're live across Tucson — TUSD high schools, BC Dance Studio, plus private schools, the YMCA, "
+                  "gyms, hospitals, and jiujitsu & dance academies. We're always looking for great new spots "
+                  "where students live and train.",
+    },
+    {
+        "keywords": ["host", "machine", "placement", "install", "my location", "my school"],
+        "answer": "Hosting is easy: we handle everything — installation, stocking, and servicing — you just "
+                  "provide the space. Use the contact form and we'll take it from there.",
+    },
+    {
+        "keywords": ["snack", "product", "sell", "menu", "stock", "healthy", "options", "what do you"],
+        "answer": "We stock heat-safe, weather-proof snacks for Arizona — trail mix, granola & seed bars, "
+                  "popcorn, veggie chips, dark chocolate, healthy energy drinks, water, and more curated "
+                  "choices. No shakes or meat, so nothing melts or goes stale in the machine.",
+    },
+    {
+        "keywords": ["contact", "email", "phone", "call", "reach", "talk", "speak", "number"],
+        "answer": f"You can reach us at {CONTACT_PHONE} or {CONTACT_EMAIL}. Or send a message through the "
+                  "contact form below and we'll get right back to you.",
+    },
+    {
+        "keywords": ["donate", "donation", "give", "give back", "support", "fund"],
+        "answer": "We love giving back to the communities that host us — we're always happy to support the "
+                  "schools and clubs we work with. Ask us about it when you reach out.",
+    },
+    {
+        "keywords": ["who", "about", "owned", "local", "tucson", "arizona", "company", "business"],
+        "answer": f"Vending Healthy Fuel (VHF) is a locally owned and operated business right here in {LOCATION}. "
+                  "We bring healthy snacking to students across the region.",
+    },
+    {
+        "keywords": ["hi", "hello", "hey", "yo"],
+        "answer": "Hi there! 👋 Ask me about our snacks, where we're located, how to host a machine, or "
+                  "anything else — happy to help.",
+    },
+]
+
+# Fallback when no keyword matches.
+FAQ_FALLBACK = ("I'm not sure about that one yet — but our team would be happy to help! "
+                "Send us a message through the contact form, or email info@vendinghealthyfuel.com.")

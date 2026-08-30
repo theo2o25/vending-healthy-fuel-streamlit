@@ -9,6 +9,7 @@ import streamlit as st
 from data import (
     SNACKS, STATS, HERO_TAGS, SPOTLIGHT_LOGOS, BENEFITS, STEPS,
     COMPANY_NAME, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_HREF, LOCATION,
+    HERO_PHOTO, FAQ, FAQ_FALLBACK,
 )
 
 st.set_page_config(
@@ -48,6 +49,14 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
+
+/* Hero photo */
+.hero-img{ width:100%; border-radius:22px; object-fit:cover; box-shadow:0 20px 40px -20px rgba(29,43,34,.45);
+  border:1px solid var(--line); }
+
+/* Snack photo */
+.snack .photo{ width:100%; height:150px; object-fit:cover; border-radius:12px; margin-bottom:.8rem;
+  border:1px solid var(--line); }
 
 .chip-row{ display:flex; flex-wrap:wrap; gap:.6rem; }
 .chip{ font-weight:600; font-size:.82rem; color:var(--ink); background:var(--surface);
@@ -105,6 +114,17 @@ div[data-testid="stForm"] { background:var(--surface); border:1px solid var(--li
 footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem;
   font-size:.82rem;color:var(--muted);}
 
+/* FAQ / chatbot */
+.chat-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
+.chat-q{ font-weight:600; margin-bottom:.3rem; }
+.chat-qa{ background:var(--surface-2); border:1px solid var(--line); border-radius:12px;
+  padding:12px 14px; margin-bottom:.6rem; }
+.chat-qa .a{ color:var(--muted); font-size:.9rem; margin-top:.2rem; }
+.chat-pill{ display:inline-block; background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
+  color:var(--leaf-dark); font-weight:700; font-size:.78rem; padding:8px 14px; border-radius:999px;
+  margin:0 .5rem .5rem 0; cursor:pointer; }
+.note{ font-size:.86rem; color:var(--muted); margin-top:.4rem; }
+
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:1fr;}
   .spotlight{flex-direction:column;align-items:flex-start;padding:34px 28px;} }
 @media (max-width:520px){ .grid{grid-template-columns:1fr;} .grid-2{grid-template-columns:1fr;} }
@@ -143,10 +163,19 @@ def handle_scroll():
     )
 
 
+def answer_question(text: str) -> str:
+    """Return a FAQ answer for a free-text question, or the fallback."""
+    t = text.lower()
+    for item in FAQ:
+        if any(k in t for k in [k.lower() for k in item["keywords"]]):
+            return item["answer"]
+    return FAQ_FALLBACK
+
+
 # ---------------------------------------------------------------------------
 # HERO
 # ---------------------------------------------------------------------------
-col_l, _ = st.columns([2, 1])
+col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
@@ -166,6 +195,9 @@ with col_l:
         st.button("Host a machine", use_container_width=True, on_click=go_to, args=("contact",))
     chips = "".join(f'<span class="chip">{t}</span>' for t in HERO_TAGS)
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
+with col_r:
+    st.markdown(f'<img class="hero-img" src="{HERO_PHOTO}" alt="Fresh healthy snacks from VHF" '
+                'loading="lazy" referrerpolicy="no-referrer">', unsafe_allow_html=True)
 
 st.write("")
 st.write("")
@@ -188,7 +220,9 @@ section_heading("What's inside", "Real snacks, <span class='g'>no junk.</span>",
                 "Every machine is stocked with treats students actually want — heat-safe and "
                 "weather-proof for Arizona, so nothing melts, sours, or goes stale in the machine.")
 snack_cards = "".join(
-    f'<div class="card ctr snack"><div class="emoji">{s["emoji"]}</div>'
+    f'<div class="card ctr snack"><img class="photo" src="{s["photo"]}" alt="{s["name"]}" '
+    f'loading="lazy" referrerpolicy="no-referrer">'
+    f'<div class="emoji">{s["emoji"]}</div>'
     f'<h3>{s["name"]}</h3><p>{s["desc"]}</p><span class="tag">{s["tag"]}</span></div>'
     for s in SNACKS
 )
@@ -244,6 +278,40 @@ steps = "".join(
     for s in STEPS
 )
 st.markdown(f'<div class="grid-3">{steps}</div>', unsafe_allow_html=True)
+
+st.write("")
+st.write("")
+
+# ---------------------------------------------------------------------------
+# FAQ / CHATBOT
+# ---------------------------------------------------------------------------
+st.markdown('<div id="faq"></div>', unsafe_allow_html=True)
+section_heading("Quick answers", "Got questions? <span class='g'>We've got you.</span>",
+                "Ask away, or tap a common question below. This little helper answers instantly "
+                "from our knowledge base.")
+
+chat_l, chat_r = st.columns([3, 2])
+with chat_l:
+    st.markdown('<div class="chat-card">', unsafe_allow_html=True)
+    qtext = st.text_input("Your question", placeholder='e.g. "How much does it cost to host?"',
+                          key="faq_input", label_visibility="collapsed")
+    if st.button("Ask", type="primary"):
+        if qtext.strip():
+            st.session_state["faq_answer"] = answer_question(qtext.strip())
+        else:
+            st.session_state["faq_answer"] = "Please type a question first! 👇"
+    if "faq_answer" in st.session_state:
+        st.markdown(f'<div class="chat-qa"><div class="a">{st.session_state["faq_answer"]}</div></div>',
+                    unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+with chat_r:
+    # Common questions as quick-tap pills
+    pills = ["How much does it cost?", "Where are you located?", "How do I host a machine?",
+             "What snacks do you sell?", "How do I contact you?"]
+    st.markdown('<div class="note">Common questions:</div>', unsafe_allow_html=True)
+    for p in pills:
+        if st.button(p, key=f"pill_{p}"):
+            st.session_state["faq_answer"] = answer_question(p)
 
 st.write("")
 st.write("")

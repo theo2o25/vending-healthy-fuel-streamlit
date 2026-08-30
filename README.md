@@ -59,11 +59,22 @@ The form emails enquiries to your inbox. Set up once:
 Open **`data.py`**. Each snack is one line, e.g.:
 
 ```python
-{"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein"},
+{"emoji": "🥜", "name": "Trail Mix & Nuts", "desc": "Crispy, salty, energy-packed handfuls.", "tag": "Protein",
+ "photo": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600&q=80&auto=format&fit=crop"},
 ```
 
 Add, remove, or reorder — push to `main` and the site updates. Same file holds stats,
-locations, partner benefits, and contact details.
+locations, partner benefits, the hero photo (`HERO_PHOTO`), and contact details.
+
+**Photos:** each snack uses a free Unsplash image so the page looks complete. They load live
+from `images.unsplash.com`. These are generic stock photos, not the real machines/snacks — swap
+any that don't match by replacing the `photo` URL. Set `HERO_PHOTO` for the big hero image.
+
+## FAQ chatbot
+
+The page has a small rule-based FAQ helper (not an AI / LLM — a keyword matcher). Answers live in
+the `FAQ` list at the bottom of **`data.py`** — edit the `keywords` and `answer` freely. It matches
+free-text questions and the quick-tap pills, and falls back to `FAQ_FALLBACK` when nothing matches.
 
 ## Run locally
 
