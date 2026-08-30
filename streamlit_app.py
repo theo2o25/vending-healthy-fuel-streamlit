@@ -48,12 +48,6 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .hero-badge{ display:inline-block; font-weight:700; font-size:.82rem; color:var(--leaf-dark);
   background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
   padding:8px 14px; border-radius:999px; margin-bottom:1rem; }
-.brand-title{ font-size:clamp(1.6rem,3.4vw,2.4rem); font-weight:800; letter-spacing:-.01em;
-  color:#000000; margin:0 0 .2rem; line-height:1.1; }
-.brand-title .bt-v{ color:#000000; }
-.brand-title .bt-h{ color:var(--leaf); }
-.brand-title .bt-f{ color:var(--sun); }
-.brand-title.brand-below{ text-align:center; margin:1rem 0 0; }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
@@ -166,6 +160,11 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 .vhf-nav a:hover{ color:var(--leaf-dark); background:var(--leaf-soft); }
 .vhf-nav a.cta{ background:var(--leaf); color:#fff !important; }
 .vhf-nav a.cta:hover{ background:var(--leaf-dark); color:#fff !important; }
+.vf-brand{ font-weight:800; font-size:1.05rem; letter-spacing:-.01em; color:#000000;
+  margin-right:auto; padding:4px 10px; white-space:nowrap; }
+.vf-brand .bt-v{ color:#000000; }
+.vf-brand .bt-h{ color:var(--leaf); }
+.vf-brand .bt-f{ color:var(--sun); }
 #snacks,#locations,#partners,#how,#faq,#contact{ scroll-margin-top:96px; }
 </style>
 """
@@ -186,7 +185,12 @@ _nav_links = "".join(
     f'<a href="#{target}">{label}</a>'
     for label, target in _NAV_ITEMS[:-1]
 ) + '<a class="cta" href="#contact">Get In Touch</a>'
-st.html(f'<nav class="vhf-nav">{_nav_links}</nav>')
+st.html(
+    '<nav class="vhf-nav">'
+    '<span class="vf-brand"><span class="bt-v">Vending</span> '
+    '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></span>'
+    f'{_nav_links}</nav>'
+)
 st.write("")
 
 
@@ -234,11 +238,6 @@ with col_l:
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
 with col_r:
     st.image(HERO_PHOTO, width="stretch")
-    st.markdown(
-        '<div class="brand-title brand-below"><span class="bt-v">Vending</span> '
-        '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></div>',
-        unsafe_allow_html=True,
-    )
 
 st.write("")
 st.write("")
