@@ -104,15 +104,9 @@ LOCATION = "Tucson, Arizona"
 FAQ = [
     {
         "keywords": ["price", "cost", "how much", "pricing", "expensive", "fee"],
-        "answer": "Pricing is simple and tailored to each location. We set fair prices that work for students "
-                  "and make sense for your space. Reach out and we'll put together a plan for your spot — no "
-                  "obligation.",
-    },
-    {
-        "keywords": ["where", "location", "school", "tusd", "campus", "gym", "hospital", "studio", "ymca"],
-        "answer": "We're live across Tucson — TUSD high schools, BC Dance Studio, plus private schools, the YMCA, "
-                  "gyms, hospitals, and jiujitsu & dance academies. We're always looking for great new spots "
-                  "where students live and train.",
+        "answer": "For you? Nothing. Absolutely nothing — $0, zero, zilch. 🙃 VHF installs, stocks, and "
+                  "services the machine, so hosting at your place costs you zero dollars. (The only thing "
+                  "with fewer dollars than that is... nothing. And that's exactly what you pay.)",
     },
     {
         "keywords": ["host", "machine", "placement", "install", "my location", "my school"],

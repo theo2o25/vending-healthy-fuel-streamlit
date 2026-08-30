@@ -46,6 +46,8 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .hero-badge{ display:inline-block; font-weight:700; font-size:.82rem; color:var(--leaf-dark);
   background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
   padding:8px 14px; border-radius:999px; margin-bottom:1rem; }
+.brand-title{ font-size:1.05rem; font-weight:800; letter-spacing:.02em; color:var(--ink);
+  margin-bottom:.4rem; }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
@@ -77,6 +79,13 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
   display:grid; place-items:center; font-size:1.3rem; }
 .benefit h3{ font-size:1rem; font-weight:700; margin:0 0 2px; }
 .benefit p{ font-size:.9rem; color:var(--muted); margin:0; }
+
+/* Host-a-machine callout */
+.cta-card{ display:flex; gap:18px; align-items:center; background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));
+  color:#fff; border-radius:18px; padding:26px 28px; margin-top:1.5rem; }
+.cta-card .cta-title{ font-size:clamp(1.3rem,2.6vw,1.8rem); font-weight:800; color:#fff; }
+.cta-card .cta-title .g{ color:var(--sun); }
+.cta-card p{ margin:.4rem 0 0; font-size:1rem; opacity:.95; }
 .step .n{ font-size:2rem; font-weight:800; color:var(--sun); line-height:1;
   text-transform:uppercase; letter-spacing:.04em; }
 .step{ text-align:center; }
@@ -179,6 +188,7 @@ col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
+        '<div class="brand-title">🥤 Vending Healthy Fuel</div>'
         '<h1 class="hero-title">Healthy <span class="g">fuel</span> for student life — '
         '<span class="sun">one vending machine</span> at a time.</h1>',
         unsafe_allow_html=True,
@@ -258,23 +268,24 @@ st.write("")
 # ---------------------------------------------------------------------------
 # FOR PARTNERS
 # ---------------------------------------------------------------------------
-col_l, col_r = st.columns([3, 2])
-with col_l:
-    section_heading("For partners", "Bring better snacking <span class='g'>to your space.</span>",
-                    "Schools, gyms, studios, hospitals and community centers — VHF handles everything "
-                    "so you can offer your students and members a healthy choice.")
-    benefits = "".join(
-        f'<div class="card benefit"><div class="ico">{b["emoji"]}</div><div>'
-        f'<h3>{b["title"]}</h3><p>{b["desc"]}</p></div></div>'
-        for b in BENEFITS
-    )
-    st.markdown(f'<div class="grid-2">{benefits}</div>', unsafe_allow_html=True)
-with col_r:
-    section_heading("Work with us", "Host a <span class='g'>machine.</span>")
-    st.write(
-        "Tell us about your location and we'll take it from there — installation, stocking, "
-        "and service all handled by VHF."
-    )
+section_heading("For partners", "Bring better snacking <span class='g'>to your space.</span>",
+                "Schools, gyms, studios, hospitals and community centers — VHF handles everything "
+                "so you can offer your students and members a healthy choice.")
+benefits = "".join(
+    f'<div class="card benefit"><div class="ico">{b["emoji"]}</div><div>'
+    f'<h3>{b["title"]}</h3><p>{b["desc"]}</p></div></div>'
+    for b in BENEFITS
+)
+st.markdown(f'<div class="grid">{benefits}</div>', unsafe_allow_html=True)
+
+# Host-a-machine callout (full width below the benefits)
+st.markdown(
+    '<div class="cta-card"><div><div class="cta-title">Host a <span class="g">machine.</span></div>'
+    "<p>Tell us about your location and we'll take it from there — installation, stocking, "
+    "and service all handled by VHF.</p></div></div>",
+    unsafe_allow_html=True,
+)
+st.button("Request a placement", type="primary", on_click=go_to, args=("contact",))
 
 # ---------------------------------------------------------------------------
 # HOW IT WORKS
@@ -313,7 +324,7 @@ with chat_l:
     st.markdown('</div>', unsafe_allow_html=True)
 with chat_r:
     # Common questions as quick-tap pills
-    pills = ["How much does it cost?", "Where are you located?", "How do I host a machine?",
+    pills = ["How much does it cost?", "How do I host a machine?",
              "What snacks do you sell?", "How do I contact you?"]
     st.markdown('<div class="note">Common questions:</div>', unsafe_allow_html=True)
     for p in pills:
