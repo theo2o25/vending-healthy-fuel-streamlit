@@ -53,6 +53,7 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .brand-title .bt-v{ color:#000000; }
 .brand-title .bt-h{ color:var(--leaf); }
 .brand-title .bt-f{ color:var(--sun); }
+.brand-title.brand-below{ text-align:center; margin:1rem 0 0; }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
@@ -215,12 +216,12 @@ with col_l:
     chips = "".join(f'<span class="chip">{t}</span>' for t in HERO_TAGS)
     st.markdown(f'<div class="chip-row">{chips}</div>', unsafe_allow_html=True)
 with col_r:
+    st.image(HERO_PHOTO, width="stretch")
     st.markdown(
-        '<div class="brand-title"><span class="bt-v">Vending</span> '
+        '<div class="brand-title brand-below"><span class="bt-v">Vending</span> '
         '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></div>',
         unsafe_allow_html=True,
     )
-    st.image(HERO_PHOTO, width="stretch")
 
 st.write("")
 st.write("")
