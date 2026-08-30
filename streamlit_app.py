@@ -26,14 +26,16 @@ CSS = """
 <style>
 :root{
   --leaf:#3f9d4f; --leaf-dark:#2f7a3c; --leaf-soft:#e4f1e0; --sun:#f2b33d;
-  --sky:#2f9fb6; --berry:#e0536f; --ink:#1d2b22; --muted:#5c6b5e; --bg:#f7f5ef;
+  --sky:#2f9fb6; --berry:#e0536f; --ink:#1d2b22; --muted:#5c6b5e; --bg:#ffffff;
   --surface:#ffffff; --surface-2:#eef5ea; --line:rgba(29,43,34,0.12);
 }
 /* Remove Streamlit chrome so the page feels like a real site */
 #MainMenu, footer, [data-testid="stToolbar"], [data-testid="stDecoration"] {visibility:hidden;}
-[data-testid="stHeader"] { background: rgba(247,245,239,0.82); }
+[data-testid="stHeader"] { background: #ffffff; }
+[data-testid="stAppViewContainer"] { background: #ffffff; }
+[data-testid="stMainBlockContainer"] { background: #ffffff; }
 .block-container { padding-top: 2rem; padding-bottom: 4rem; max-width: 1120px; }
-body { background: var(--bg); color: var(--ink); }
+body { background: #ffffff; color: var(--ink); }
 
 h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .kicker{ font-weight:800; text-transform:uppercase; letter-spacing:.16em;
@@ -47,7 +49,10 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
   background:var(--leaf-soft); border:1px solid rgba(63,157,79,.25);
   padding:8px 14px; border-radius:999px; margin-bottom:1rem; }
 .brand-title{ font-size:clamp(1.6rem,3.4vw,2.4rem); font-weight:800; letter-spacing:-.01em;
-  color:var(--leaf-dark); margin:0 0 .2rem; line-height:1.1; }
+  color:#000000; margin:0 0 .2rem; line-height:1.1; }
+.brand-title .bt-v{ color:#000000; }
+.brand-title .bt-h{ color:var(--leaf); }
+.brand-title .bt-f{ color:var(--sun); }
 .hero-title{ font-size:clamp(2.6rem,7vw,4.6rem); line-height:1.02; margin:0; }
 .hero-title .g{ color:var(--leaf);} .hero-title .sun{ color:var(--sun);}
 .hero-sub{ max-width:640px; font-size:clamp(1.05rem,1.6vw,1.2rem); color:var(--muted); margin:1.2rem 0 1.6rem; }
@@ -188,7 +193,8 @@ col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
-        '<div class="brand-title">Vending Healthy Fuel</div>'
+        '<div class="brand-title"><span class="bt-v">Vending</span> '
+        '<span class="bt-h">Healthy</span> <span class="bt-f">Fuel</span></div>'
         '<h1 class="hero-title">Healthy <span class="g">fuel</span> for student life — '
         '<span class="sun">one vending machine</span> at a time.</h1>',
         unsafe_allow_html=True,
