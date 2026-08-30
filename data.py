@@ -59,10 +59,9 @@ HERO_TAGS = [
 ]
 
 SPOTLIGHT_LOGOS = [
-    "Tucson Unified School District",
+    "Public schools",
     "Private schools",
-    "BC Dance Studio",
-    "YMCA",
+    "Dance studios",
     "Gyms",
     "Hospitals",
     "Commercial areas",

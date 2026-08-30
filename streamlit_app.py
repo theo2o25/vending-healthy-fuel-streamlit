@@ -109,13 +109,13 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .stat .lbl{ margin-top:.4rem; font-size:.86rem; color:var(--muted); font-weight:600; }
 
 /* Spotlight */
-.spotlight{ display:flex; gap:30px; align-items:center; background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));
+.spotlight{ display:inline-flex; gap:30px; align-items:center; background:linear-gradient(135deg,var(--leaf),var(--leaf-dark));
   color:#fff; border-radius:22px; padding:46px 44px; }
 .spotlight .badge-big{ flex:none; width:88px; height:88px; border-radius:20px; background:rgba(255,255,255,.16);
   display:grid; place-items:center; font-size:2.4rem; }
 .spotlight h3{ color:#fff; font-size:clamp(1.4rem,3vw,2rem); margin:0 0 .5rem; }
 .spotlight p{ opacity:.94; font-size:1.02rem; margin:0 0 1rem; }
-.logos{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.logos{ display:flex; flex-wrap:nowrap; gap:.5rem; }
 .logos span{ background:rgba(255,255,255,.16); border-radius:999px; padding:6px 12px; font-size:.8rem; font-weight:700; }
 
 /* Contact cards */
@@ -288,7 +288,7 @@ st.markdown(
     '<div id="locations"><div class="spotlight"><div class="badge-big">🏫</div><div>'
     "<h3>Serving Tucson's students today.</h3>"
     "<p>VHF holds the vending contract for the Tucson Unified School District, and Tucson High just "
-    "came on board — with machines live at BC Dance Studio and rolling out at private schools, the YMCA, "
+    "came on board — with machines live at dance studios and rolling out at private schools, "
     "gyms, hospitals, and commercial areas across the region.</p>"
     f'<div class="logos">{logos}</div></div></div></div>',
     unsafe_allow_html=True,
