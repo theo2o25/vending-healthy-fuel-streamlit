@@ -140,7 +140,19 @@ FAQ = [
     },
     {
         "keywords": ["install", "time", "how long", "duration"],
-        "answer": "VHF’s team installs and stocks the machine in about an hour, then it’s ready to go."
+        "answer": "VHF’s team installs and stocks the machine in about 1‑2 hours, depending on the location and the machine best fit for the site."
+    },
+    {
+        "keywords": ["problem", "solution", "fix", "issue"],
+        "answer": "VHF solves the problem of students going hungry between meals by bringing healthy, grab‑and‑go snacks right into their schools and activity spaces — no cost to the host."
+    },
+    {
+        "keywords": ["maintain", "service", "repair", "upkeep"],
+        "answer": "Once installed, VHF handles all maintenance and restocking — the machine is serviced regularly so it never runs out of popular items."
+    },
+    {
+        "keywords": ["partnership", "partner", "collab"],
+        "answer": "VHF partners with local schools, gyms, and community sites — the host provides the space, VHF supplies and maintains the machine at no cost."
     },
 ]
 # Fallback when no keyword matches.
