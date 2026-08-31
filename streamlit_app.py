@@ -193,8 +193,7 @@ def section_heading(kicker, title_html, lede=None):
     html = f'<div class="kicker">{kicker}</div><h2 class="sect-title">{title_html}</h2>'
     if lede:
         html += f'<p class="lede">{lede}</p>'
-    st.markdown(html, unsafe_allow_html=True)
-    st.write("")
+    st.markdown(f'<div style="margin-bottom:1.2rem">{html}</div>', unsafe_allow_html=True)
 
 
 def answer_question(text: str) -> str:
