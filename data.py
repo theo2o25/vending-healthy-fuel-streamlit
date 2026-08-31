@@ -131,10 +131,9 @@ FAQ = [
         "answer": f"Vending Healthy Fuel (VHF) is a locally owned and operated business right here in {LOCATION}. "
                   "We bring healthy snacking to students across the region.",
     },
-    {
+{
         "keywords": ["hi", "hello", "hey", "yo"],
-"answer": "Hi there! 👋 Ask me about our snacks, where we're located, how to host a machine, or "
-                  "anything else — happy to help.",
+        "answer": "We carry trail mix, granola bars, popcorn, veggie chips, dark chocolate snacks, healthy energy drinks, and water! Ask me about a specific snack or type of snack you're interested in."
     },
     {
         "keywords": ["install", "time", "how long", "duration"],
