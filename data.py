@@ -108,7 +108,7 @@ FAQ = [
                   "with fewer dollars than that is... nothing. And that's exactly what you pay.)",
     },
     {
-        "keywords": ["host", "machine", "placement", "install", "my location", "my school"],
+        "keywords": ["host", "machine", "placement", "my location", "my school"],
         "answer": "Hosting is easy: we handle everything — installation, stocking, and servicing — you just "
                   "provide the space. Use the contact form and we'll take it from there.",
     },
