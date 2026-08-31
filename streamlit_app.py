@@ -129,10 +129,10 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
   font-size:.82rem;color:var(--muted);}
 
 /* FAQ / chatbot */
-.chat-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
-.chat-card [data-testid="stElementContainer"]{ background:transparent; }
-.chat-card [data-testid="stPills"] { margin:0 0 .4rem; }
-.chat-card [data-testid="stChatMessage"] { margin-top:.6rem; }
+[data-testid="stVerticalBlockBorderWrapper"]{ background:var(--surface); border:1px solid var(--line);
+  border-radius:16px; padding:20px; }
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stPills"] { margin:0 0 .4rem; }
+[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stChatMessage"] { margin-top:.6rem; }
 
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:1fr;}
   .spotlight{flex-direction:column;align-items:flex-start;padding:34px 28px;} }
@@ -164,6 +164,14 @@ footer-note{margin-top:3rem;border-top:1px dashed var(--line);padding-top:1.2rem
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
+st.markdown("""
+<style>
+/* Expander tweaks – collapse padding/margin so the card sits tight */
+[data-testid="stExpander"] > div { padding-top:0; margin-top:0; }
+ /* Hide the expand/collapse arrow */
+ [data-testid="stExpander"] svg { display:none; }
+</style>
+""", unsafe_allow_html=True)
 
 # --------------------------------------------------------------------------
 # STICKY TOP NAV
@@ -332,31 +340,25 @@ st.write("")
 # ---------------------------------------------------------------------------
 # FAQ / CHATBOT
 # ---------------------------------------------------------------------------
-st.markdown('<div id="faq"></div>', unsafe_allow_html=True)
-section_heading("Quick answers", "Got questions? <span class='g'>We've got you.</span>",
-                "Ask away, or tap a common question below. This little helper answers instantly "
-                "from our knowledge base.", spacing="0")
-
-st.markdown('<div class="chat-card">', unsafe_allow_html=True)
-_quick_qs = ["How much does it cost?", "How do I host a machine?",
-             "What snacks do you sell?", "How do I contact you?"]
-top_tap = st.pills("Tap a common question:", options=_quick_qs, key="faq_pills")
-qc, qb = st.columns([4, 1])
-with qc:
-    qtext = st.text_input("Your question", placeholder='e.g. "How much does it cost to host?"',
-                          key="faq_input", label_visibility="collapsed")
-with qb:
-    st.write("")
-    ask = st.button("Ask", type="primary", use_container_width=True)
-if ask:
-    st.session_state["bot_reply"] = (
-        answer_question(qtext.strip()) if qtext.strip() else "Please type a question first! 👇"
-    )
-elif top_tap:
-    st.session_state["bot_reply"] = answer_question(top_tap)
-if "bot_reply" in st.session_state:
-    st.chat_message("assistant").write(st.session_state["bot_reply"])
-st.markdown('</div>', unsafe_allow_html=True)
+with st.expander("Got questions?", expanded=True):
+    _quick_qs = ["How much does it cost?", "How do I host a machine?",
+                 "What snacks do you sell?", "How do I contact you?"]
+    top_tap = st.pills("Tap a common question:", options=_quick_qs, key="faq_pills")
+    qc, qb = st.columns([4, 1])
+    with qc:
+        qtext = st.text_input("Your question", placeholder='e.g. "How much does it cost to host?"',
+                              key="faq_input", label_visibility="collapsed")
+    with qb:
+        st.write("")
+        ask = st.button("Ask", type="primary", use_container_width=True)
+    if ask:
+        st.session_state["bot_reply"] = (
+            answer_question(qtext.strip()) if qtext.strip() else "Please type a question first! 👇"
+        )
+    elif top_tap:
+        st.session_state["bot_reply"] = answer_question(top_tap)
+    if "bot_reply" in st.session_state:
+        st.chat_message("assistant").write(st.session_state["bot_reply"])
 
 st.write("")
 st.write("")
