@@ -102,6 +102,10 @@ LOCATION = "Tucson, Arizona"
 # and an answer. Edit freely — the bot reads this list on each run.
 FAQ = [
     {
+        "keywords": ["install", "time", "how long", "duration"],
+        "answer": "VHF’s team installs and stocks the machine in about 1‑2 hours, then it’s ready to go. This of course is dependent on the number of machines, machine size and location challenges."
+    },
+    {
         "keywords": ["price", "cost", "how much", "pricing", "expensive", "fee"],
         "answer": "For you? Nothing. Absolutely nothing — $0, zero, zilch. 🙃 VHF installs, stocks, and "
                   "services the machine, so hosting at your place costs you zero dollars. (The only thing "
@@ -112,12 +116,7 @@ FAQ = [
         "answer": "Hosting is easy: we handle everything — installation, stocking, and servicing — you just "
                   "provide the space. Use the contact form and we'll take it from there.",
     },
-    {
-        "keywords": ["snack", "product", "sell", "menu", "stock", "healthy", "options", "what do you"],
-        "answer": "We stock heat-safe, weather-proof snacks for Arizona — trail mix, granola & seed bars, "
-                  "popcorn, veggie chips, dark chocolate, healthy energy drinks, water, and more curated "
-                  "choices. No shakes or meat, so nothing melts or goes stale in the machine.",
-    },
+    ...
     {
         "keywords": ["contact", "email", "phone", "call", "reach", "talk", "speak", "number"],
         "answer": f"You can reach us at {CONTACT_PHONE} or {CONTACT_EMAIL}. Or send a message through the "
