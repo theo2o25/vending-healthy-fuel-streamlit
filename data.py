@@ -135,11 +135,14 @@ FAQ = [
     },
     {
         "keywords": ["hi", "hello", "hey", "yo"],
-        "answer": "Hi there! 👋 Ask me about our snacks, where we're located, how to host a machine, or "
+"answer": "Hi there! 👋 Ask me about our snacks, where we're located, how to host a machine, or "
                   "anything else — happy to help.",
     },
+    {
+        "keywords": ["install", "time", "how long", "duration"],
+        "answer": "VHF’s team installs and stocks the machine in about an hour, then it’s ready to go."
+    },
 ]
-
 # Fallback when no keyword matches.
 FAQ_FALLBACK = ("I'm not sure about that one yet — but our team would be happy to help! "
                 "Send us a message through the contact form, or email info@vendinghealthyfuel.com.")
