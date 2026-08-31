@@ -116,7 +116,6 @@ FAQ = [
         "answer": "Hosting is easy: we handle everything — installation, stocking, and servicing — you just "
                   "provide the space. Use the contact form and we'll take it from there.",
     },
-    ...
     {
         "keywords": ["contact", "email", "phone", "call", "reach", "talk", "speak", "number"],
         "answer": f"You can reach us at {CONTACT_PHONE} or {CONTACT_EMAIL}. Or send a message through the "
