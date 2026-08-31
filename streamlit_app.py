@@ -181,7 +181,6 @@ _NAV_ITEMS = [
     ("Serving Tucson's Students Today", "locations"),
     ("For Partners", "partners"),
     ("How It Works", "how"),
-    ("FAQ", "faq"),
     ("Contact", "contact"),
 ]
 _nav_links = "".join(
