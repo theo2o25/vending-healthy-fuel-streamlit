@@ -189,11 +189,11 @@ st.html(
 st.write("")
 
 
-def section_heading(kicker, title_html, lede=None):
+def section_heading(kicker, title_html, lede=None, spacing="1.2rem"):
     html = f'<div class="kicker">{kicker}</div><h2 class="sect-title">{title_html}</h2>'
     if lede:
         html += f'<p class="lede">{lede}</p>'
-    st.markdown(f'<div style="margin-bottom:1.2rem">{html}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="margin-bottom:{spacing}">{html}</div>', unsafe_allow_html=True)
 
 
 def answer_question(text: str) -> str:
@@ -335,7 +335,7 @@ st.write("")
 st.markdown('<div id="faq"></div>', unsafe_allow_html=True)
 section_heading("Quick answers", "Got questions? <span class='g'>We've got you.</span>",
                 "Ask away, or tap a common question below. This little helper answers instantly "
-                "from our knowledge base.")
+                "from our knowledge base.", spacing="0")
 
 st.markdown('<div class="chat-card">', unsafe_allow_html=True)
 _quick_qs = ["How much does it cost?", "How do I host a machine?",
