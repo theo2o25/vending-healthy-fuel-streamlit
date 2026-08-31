@@ -219,13 +219,12 @@ col_l, col_r = st.columns([3, 2], vertical_alignment="center")
 with col_l:
     st.markdown(
         f'<div class="hero-badge">Locally owned &amp; operated · {LOCATION}</div>'
-        '<h1 class="hero-title">Healthy <span class="g">fuel</span> for student life — '
+        '<h1 class="hero-title">Healthy <span class="g">fuel</span> for life — '
         '<span class="sun">one vending machine</span> at a time.</h1>',
         unsafe_allow_html=True,
     )
     st.markdown(
-        "<p class='hero-sub'>VHF brings fresh, real snacks to the places students live and train — "
-        "high schools, gyms, studios, and beyond. Better choices, right where they already are.</p>",
+        "<p class='hero-sub'>VHF brings healthier vending options to the Tucson areas — high schools, gyms, and beyond. Better choices, right where they already are.</p>",
         unsafe_allow_html=True,
     )
     st.markdown(
