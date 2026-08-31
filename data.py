@@ -140,7 +140,7 @@ FAQ = [
     },
     {
         "keywords": ["install", "time", "how long", "duration"],
-        "answer": "VHF’s team installs and stocks the machine in about 1‑2 hours, depending on the location and the machine best fit for the site."
+        "answer": "Hosting is easy: we handle everything — installation, stocking, and servicing — you just provide the space. Use the contact form and we'll take it from there."
     },
     {
         "keywords": ["problem", "solution", "fix", "issue"],
