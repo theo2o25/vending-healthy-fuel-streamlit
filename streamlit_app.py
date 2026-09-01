@@ -257,7 +257,7 @@ st.write("")
 # ---------------------------------------------------------------------------
 st.markdown('<div id="snacks"></div>', unsafe_allow_html=True)
 section_heading("What's inside", "Real snacks, <span class='g'>no junk.</span>",
-                "Every machine is stocked with treats students actually want — heat-safe and "
+                "Every machine is stocked with treats everyone actually want — heat-safe and "
                 "weather-proof for Arizona, so nothing melts, sours, or goes stale in the machine.")
 
 # Render snacks 4-per-row with Streamlit columns so local images display correctly.
