@@ -2,6 +2,7 @@
 
 Locally owned & operated healthy snack vending in Tucson, AZ.
 Edit content in data.py. Email via SendGrid (secrets: .streamlit/secrets.toml).
+Updated 2026-08-31.
 """
 
 import streamlit as st
