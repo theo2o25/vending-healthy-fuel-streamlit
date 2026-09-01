@@ -64,11 +64,11 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px 24px; }
 .card.ctr{ text-align:center; }
 /* Compact snack info boxes under each product image */
-.snack{ padding:10px 10px; border-radius:12px; }
+.snack{ padding:10px 10px; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; min-height:180px; box-sizing:border-box; }
 .snack .emoji{ font-size:1.5rem; }
 .snack h3{ font-size:.9rem; margin:.35rem 0 .2rem; }
 .snack p{ font-size:.78rem; line-height:1.35; }
-.snack .tag{ margin-top:.5rem; font-size:.62rem; padding:3px 8px; }
+.snack .tag{ margin-top:auto; font-size:.62rem; padding:3px 8px; }
 .card .emoji{ font-size:2.4rem; line-height:1; }
 .card h3{ font-size:1.02rem; font-weight:700; margin:.5rem 0 .25rem; }
 .card p{ font-size:.86rem; color:var(--muted); margin:0; }
