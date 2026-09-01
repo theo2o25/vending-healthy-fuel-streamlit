@@ -23,15 +23,15 @@ SNACKS = [
      "photo": "images/granola.jpg"},
     {"emoji": "🍿", "name": "Popcorn & Crisps", "desc": "Light, crunchy snacks that won't weigh you down.", "tag": "Better Snack",
      "photo": "images/popcorn.jpg"},
-    {"emoji": "🥕", "name": "Veggie Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe",
+    {"emoji": "🥕", "name": "Healthy Chips", "desc": "Crunchy, colorful chips packed with real vegetables.", "tag": "Heat-Safe",
      "photo": "images/veggie-chips.jpg"},
     {"emoji": "🍫", "name": "Dark Chocolate Snacks", "desc": "Healthy but sweet chocolatey options.", "tag": "Better Treat",
      "photo": "images/dark-chocolate.jpg"},
     {"emoji": "⚡", "name": "Healthy Energy Drinks", "desc": "Clean, low-sugar boosts to fuel busy students.", "tag": "Energy",
      "photo": "images/energy-drink.jpg"},
-    {"emoji": "💧", "name": "Water & Hydration", "desc": "Hydrating drinks to go with every snack.", "tag": "Hydrate",
+    {"emoji": "💧", "name": "Water & Juices", "desc": "Hydrating drinks to go with every snack.", "tag": "Hydrate",
      "photo": "images/water.jpg"},
-    {"emoji": "🥨", "name": "More Better Choices", "desc": "Curated options that hit the spot — minus the junk.", "tag": "Curated",
+    {"emoji": "🥨", "name": "Better Choices", "desc": "Curated options that hit the spot — minus the junk.", "tag": "Curated",
      "photo": "images/better-choices.jpg"},
 ]
 
