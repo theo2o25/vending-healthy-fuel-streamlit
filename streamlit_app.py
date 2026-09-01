@@ -259,8 +259,7 @@ st.write("")
 # ---------------------------------------------------------------------------
 st.markdown('<div id="snacks"></div>', unsafe_allow_html=True)
 section_heading("What's inside", "Real snacks, <span class='g'>no junk.</span>",
-                "Every machine is stocked with treats everyone actually want — heat-safe and "
-                "weather-proof for Arizona, so nothing melts, sours, or goes stale in the machine.")
+                "Every machine is stocked with treats everyone actually want — healthier snacks that keep energy going through the day including protein options, healthier chips and a large drink selection.")
 
 # Render snacks in a CSS grid for equal-sized cards.
 COLS_PER_ROW = 4
