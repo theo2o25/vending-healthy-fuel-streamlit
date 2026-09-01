@@ -226,7 +226,7 @@ with col_l:
         unsafe_allow_html=True,
     )
     st.markdown(
-        "<p class='hero-sub'>VHF brings healthier vending options to the Tucson areas — high schools, gyms, and beyond. Better choices, right where they already are.</p>",
+        "<p class='hero-sub'>VHF brings healthier vending options to the Tucson areas — high schools, gyms, and beyond. Better choices than junk food, candy bars and soda. Keeping people healthy and happy.</p>",
         unsafe_allow_html=True,
     )
     st.markdown(
