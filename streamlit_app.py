@@ -290,7 +290,7 @@ logos = "".join(f"<span>{l}</span>" for l in SPOTLIGHT_LOGOS)
 st.markdown(
     '<div id="locations"><div class="spotlight"><div class="badge-big">🏫</div><div>'
     "<p>VHF holds the vending contract for the Tucson Unified School District — the largest school "
-    "system in Tucson, with 88 schools — and Tucson High just came on board. With machines live at "
+    "system in Tucson, with 88 schools — and Tucson High just came on board. With vending machines at "
     "dance studios and rolling out at private schools, gyms, hospitals, and commercial areas across "
     "the region.</p>"
     "<p>Don't worry — every location gets our personal touch, from installation to restock and service.</p>"
