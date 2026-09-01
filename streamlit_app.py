@@ -345,7 +345,8 @@ st.write("")
 with st.expander("Got questions?", expanded=True):
     _quick_qs = ["How much does it cost?", "How do I host a machine?",
                  "What snacks do you sell?", "How do I contact you?",
-                 "How long does it take to install a machine?"]
+                 "How long does it take to install a machine?",
+                 "How soon can I get a machine?"]
     top_tap = st.pills("Tap a common question:", options=_quick_qs, key="faq_pills")
     qc, qb = st.columns([4, 1])
     with qc:

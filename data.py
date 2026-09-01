@@ -103,7 +103,11 @@ LOCATION = "Tucson, Arizona"
 FAQ = [
     {
         "keywords": ["install", "time", "how long", "duration"],
-        "answer": "VHF’s team installs and stocks the machine in about 1‑2 hours, then it’s ready to go. This of course is dependent on the number of machines, machine size and location challenges."
+        "answer": "VHF's team installs and stocks the machine in about 1‑2 hours, then it's ready to go. This of course is dependent on the number of machines, machine size and location challenges."
+    },
+    {
+        "keywords": ["soon", "delivery", "get a machine", "when can I get", "how soon"],
+        "answer": "We order brand new machines for you so it usually takes 2-4 weeks for delivery."
     },
     {
         "keywords": ["price", "cost", "how much", "pricing", "expensive", "fee"],
