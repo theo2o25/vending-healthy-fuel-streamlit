@@ -64,11 +64,12 @@ h1, h2, h3 { color: var(--ink); letter-spacing:-0.02em; }
 .card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px 24px; }
 .card.ctr{ text-align:center; }
 /* Compact snack info boxes under each product image */
-.snack{ padding:10px 10px; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; min-height:180px; box-sizing:border-box; }
-.snack .emoji{ font-size:1.5rem; }
-.snack h3{ font-size:.9rem; margin:.35rem 0 .2rem; }
-.snack p{ font-size:.78rem; line-height:1.35; }
-.snack .tag{ margin-top:auto; font-size:.62rem; padding:3px 8px; }
+.snack-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.snack-grid .snack-card{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px 24px; text-align:center; display:flex; flex-direction:column; align-items:center; height:100%; box-sizing:border-box; }
+.snack-grid .snack-card .emoji{ font-size:2.4rem; line-height:1; }
+.snack-grid .snack-card h3{ font-size:1.02rem; font-weight:700; margin:.5rem 0 .25rem; }
+.snack-grid .snack-card p{ font-size:.86rem; color:var(--muted); margin:0; }
+.snack-grid .snack-card .tag{ display:inline-block; margin-top:auto; padding-top:.8rem; font-size:.68rem; font-weight:800; color:var(--leaf-dark); background:var(--leaf-soft); padding:4px 10px; border-radius:999px; letter-spacing:.04em; text-transform:uppercase; }
 .card .emoji{ font-size:2.4rem; line-height:1; }
 .card h3{ font-size:1.02rem; font-weight:700; margin:.5rem 0 .25rem; }
 .card p{ font-size:.86rem; color:var(--muted); margin:0; }
@@ -261,21 +262,24 @@ section_heading("What's inside", "Real snacks, <span class='g'>no junk.</span>",
                 "Every machine is stocked with treats everyone actually want — heat-safe and "
                 "weather-proof for Arizona, so nothing melts, sours, or goes stale in the machine.")
 
-# Render snacks 4-per-row with Streamlit columns so local images display correctly.
+# Render snacks in a CSS grid for equal-sized cards.
 COLS_PER_ROW = 4
 for i in range(0, len(SNACKS), COLS_PER_ROW):
     row = SNACKS[i:i + COLS_PER_ROW]
-    cols = st.columns(len(row))
+    cards_html = ""
+    for s in row:
+        cards_html += (
+            f'<div class="snack-card">'
+            f'<div class="emoji">{s["emoji"]}</div>'
+            f'<h3>{s["name"]}</h3><p>{s["desc"]}</p>'
+            f'<span class="tag">{s["tag"]}</span></div>'
+        )
+    # Render images first (one row of st.image), then the card grid below
+    cols = st.columns(COLS_PER_ROW)
     for col, s in zip(cols, row):
         with col:
             st.image(s["photo"], width="stretch")
-            st.markdown(
-                f'<div class="card ctr snack">'
-                f'<div class="emoji">{s["emoji"]}</div>'
-                f'<h3>{s["name"]}</h3><p>{s["desc"]}</p>'
-                f'<span class="tag">{s["tag"]}</span></div>',
-                unsafe_allow_html=True,
-            )
+    st.markdown(f'<div class="snack-grid">{cards_html}</div>', unsafe_allow_html=True)
 
 st.write("")
 st.write("")
