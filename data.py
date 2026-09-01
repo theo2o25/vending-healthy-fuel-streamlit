@@ -133,7 +133,7 @@ FAQ = [
     },
 {
         "keywords": ["hi", "hello", "hey", "yo"],
-        "answer": "We carry trail mix, granola bars, popcorn, healthy chips, dark chocolate snacks, healthy energy drinks, and water! Ask me about a specific snack or type of snack you're interested in."
+        "answer": "We carry trail mix, granola bars, popcorn, healthy chips, dark chocolate snacks, healthy energy drinks, juices and water! Ask me about a specific snack or type of snack you're interested in."
     },
     {
         "keywords": ["install", "time", "how long", "duration"],
