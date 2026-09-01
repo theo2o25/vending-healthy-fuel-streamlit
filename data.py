@@ -81,7 +81,7 @@ BENEFITS = [
 # HOW IT WORKS
 # ---------------------------------------------------------------------------
 STEPS = [
-    {"n": "1", "title": "Pick your location", "desc": "Tell us where you'd like a machine — or we find the perfect spot for yours."},
+    {"n": "1", "title": "Pick your location", "desc": "Tell us where you'd like a machine — or we work together to find the perfect spot at your location."},
     {"n": "2", "title": "We place & stock it", "desc": "VHF installs the machine and fills it with healthy, wanted snacks."},
     {"n": "3", "title": "We handle the rest", "desc": "Stocking, servicing, and keeping it fresh — done for you, ongoing."},
 ]
